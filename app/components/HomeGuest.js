@@ -132,6 +132,7 @@ function HomeGuest() {
 
   useEffect(() => {
     if (state.username.checkCount) {
+      console.log("doesEmailExist is firing")
       const ourRequest = Axios.CancelToken.source()
       async function fetchResults() {
         try {
@@ -144,7 +145,7 @@ function HomeGuest() {
       fetchResults()
       return () => ourRequest.cancel()
     }
-  }, [state.username.checkCount])
+  }, [state.username.checkCount, state.username.value, dispatch])
 
   useEffect(() => {
     if (state.email.checkCount) {

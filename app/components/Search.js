@@ -20,6 +20,7 @@ function Search() {
     return () => document.removeEventListener("keyup", searchKeyPressHandler)
   }, [])
 
+  // If there is a string show loading and update request count after a short delay to allow for multiple characters
   useEffect(() => {
     if (state.searchTerm.trim()) {
       setState(draft => {
@@ -39,6 +40,7 @@ function Search() {
     }
   }, [state.searchTerm])
 
+  // Everytime request count is updated we request data
   useEffect(() => {
     if (state.requestCount) {
       const ourRequest = Axios.CancelToken.source()
